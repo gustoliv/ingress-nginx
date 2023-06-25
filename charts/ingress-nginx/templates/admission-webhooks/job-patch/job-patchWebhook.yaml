@@ -10,6 +10,10 @@ metadata:
     {{- with .Values.controller.admissionWebhooks.annotations }}
     {{- toYaml . | nindent 4 }}
     {{- end }}
+    {{- if .Values.admissionWebhooks.argocd.enabled -}}
+    "argocd.argoproj.io/hook": PostSync
+    "argocd.argoproj.io/hook-delete-policy": HookSucceeded
+    {{- end }}
   labels:
     {{- include "ingress-nginx.labels" . | nindent 4 }}
     app.kubernetes.io/component: admission-webhook

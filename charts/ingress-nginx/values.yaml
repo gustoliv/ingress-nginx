@@ -556,6 +556,10 @@ controller:
     containerSecurityContext:
       allowPrivilegeEscalation: false
   admissionWebhooks:
+    # ArgoCD deployment
+    argocd:
+      enabled: false
+
     annotations: {}
     # ignore-check.kube-linter.io/no-read-only-rootfs: "This deployment needs write access to root filesystem".
 
